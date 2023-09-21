@@ -1,38 +1,221 @@
-.App {
-  text-align: center;
+
+@keyframes SearchSelected {
+  0%{width: 30vw;}
+  100%{width: 40vw;}
+}
+@keyframes SearchDeSelected {
+  0%{width: 40vw;}
+  100%{width: 30vw;}
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*{
+  margin: 0;
+  /* transition: all 330ms ease-in-out; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.wrapper {
+  background: black;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.main_header {
+  min-height: 75vh;
+  background: #67B26F;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4ca2cd, #67B26F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4ca2cd, #67B26F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: flex;
+  flex-direction: column;
+}
+
+.navmenu {
+  display: flex;
+  flex-direction: row;
+  margin: 0 3vw 0 3vw;
+}
+
+.navmenu_icon {
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+  background: cyan;
+  border-radius: 50%;
+}
+
+.navmenu_diag {
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+}
+
+.navmenu_item {
+  flex: auto;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-content: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.navmenu_icon_iv{
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: 82%;
+  background-repeat: no-repeat;
+  filter: invert(100%) sepia(100%) saturate(1000%) hue-rotate(180deg) brightness(100%) contrast(100%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navmenu_icon_iv:has(svg:hover){
+  filter: invert(50%) sepia(59%) saturate(1300%) hue-rotate(125deg) brightness(200%) contrast(100%);
 }
+
+.navmenu_icon_iv svg{
+  width: 100%;
+  height: 100%;
+}
+
+.navmenu_diag .navmenu_item:first-child, .navmenu_diag .navmenu_item:last-child{
+  flex: initial;
+    margin: 0 3vw 0 3vw;
+    padding: 0 3vw 0 3vw;
+}
+
+.header_section{
+}
+
+.header_content_evenlyspaced{
+  flex: 1;
+  height: 100%;
+  position: relative;
+  padding-top: 3vh;
+  margin-bottom: 7vh;
+}
+
+.header_content_evenlyspaced .carousel{
+  position: initial;
+}
+
+
+.header_content{
+}
+
+.headersectioncontent_leftmost{
+}
+
+.header_content{
+}
+
+.headersectioncontent_rightmost{
+}
+
+.main_section {
+  background: white;
+}
+
+.mainsection_featured{
+  z-index: 0;
+  position: relative;
+  padding-bottom: 70px;
+  padding-top: 50px;
+}
+
+.mainsection_featured::after{
+  content: "";
+  width: 100%;
+  height: 70px;
+  /* background: linear-gradient(356deg, #ffffff 50%, #ffffff00 50%); */
+  background: url("./img/diag_bar.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+}
+
+.msection_1{
+  background: linear-gradient(35deg, #fb6340 0, #fbb140 100%);
+  margin-left: 65px;
+  margin-right: 65px;
+  margin-top: -30px;
+  padding-top: 25px;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.msection_2{
+  background:white;
+}
+
+.msection_3{
+  background: #bda6b5;
+  padding: 0;
+}
+
+.mainfeatured_content{
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.cardHorizontalHolder{
+  display: flex;
+  overflow: auto;
+
+}
+
+.mainfeatured_content .card{
+  margin: 3vh;
+  max-width: 16rem;
+  flex: none;
+}
+
+
+.feat_aboutcards_gp .card {
+  margin: 6vw;
+}
+
+
+
+
+
+
+
+.main_footer {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer_content {
+  flex: auto;
+}
+
+.footer_end {
+  height: 10vh;
+  background: aqua;
+  display: flex;
+}
+
+.footer_end *{
+  margin: auto;
+}
+
+
+
+
+/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+
+a.carousel-control-prev {
+  width: 10%;
+}
+
+.carousel-inner {
+  width: 80%;
+  left: 10%;
+}
+
+
+
+
