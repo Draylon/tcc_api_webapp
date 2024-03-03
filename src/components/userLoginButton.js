@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import { UserIcon } from '../img/svgIcons';
 
+import {NavLink} from 'react-router-dom';
+
 class UserLoginButton extends Component {
 
     constructor(props) {
@@ -24,10 +26,12 @@ class UserLoginButton extends Component {
         return(
             <div className='usermenu_comp navmenu_icon_iv'
             onClick={()=>{
-                alert("login modal")
+                
             }}
             >
-                <UserIcon/>
+                <NavLink to="/user" activeStyle>
+                    <UserIcon/>
+                </NavLink>
             </div>
         );
     }

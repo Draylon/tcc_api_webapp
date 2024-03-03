@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+<div align="center" id="top"> 
+  <img src="./.github/app.gif" alt="Api" />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  &#xa0;
 
-## Available Scripts
+  <!-- <a href="https://api.netlify.app">Demo</a> -->
+</div>
 
-In the project directory, you can run:
+<h1 align="center">TCC - API</h1>
 
-### `npm start`
+<p align="center">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/draylon/tcc_api_webapp?color=56BEB8">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/draylon/tcc_api_webapp?color=56BEB8">
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/draylon/tcc_api_webapp?color=56BEB8">
 
-### `npm test`
+  <img alt="License" src="https://img.shields.io/github/license/draylon/tcc_api_webapp?color=56BEB8">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/draylon/tcc_api_webapp?color=56BEB8" /> -->
 
-### `npm run build`
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/draylon/tcc_api_webapp?color=56BEB8" /> -->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/draylon/tcc_api_webapp?color=56BEB8" /> -->
+</p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<!-- Status -->
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- <h4 align="center"> 
+	🚧  Api 🚀 Under construction...  🚧
+</h4> 
 
-### `npm run eject`
+<hr> -->
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<p align="center">
+  <a href="https://github.com/Draylon/tcc_impl">Voltar</a> &#xa0; | &#xa0; 
+  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting">Testing</a> &#xa0; | &#xa0;
+  <a href="#memo-license">License</a> &#xa0; | &#xa0;
+  <a href="https://github.com/draylon" target="_blank">Author</a>
+</p>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## :dart: About ##
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Implementação de uma API como parte do [trabalho de conclusão de curso](https://github.com/Draylon/tcc_impl).
 
-## Learn More
+## :sparkles: Features ##
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+:heavy_check_mark: RESTful API;\
+:heavy_check_mark: Configuração automática;
+<!-- :heavy_check_mark: Feature 3; -->
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## :white_check_mark: Requirements ##
 
-### Code Splitting
+Antes dos procedimentos em :checkered_flag: Starting, esta aplicação requer as tecnologias:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [Node.js](https://nodejs.org/en/)
+- [MongoDB](https://www.mongodb.com/)
+- [NPM](https://www.npmjs.com/)
 
-### Analyzing the Bundle Size
+## :checkered_flag: Starting ##
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+# NPM
+$ npm install
 
-### Making a Progressive Web App
+# iniciar webapp
+$ npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+Após executar, o WEBAPP é inicializado na porta 8080, visto em [app.js](app.js)
 
-### Advanced Configuration
+## :memo: License ##
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Made with :heart: by <a href="https://github.com/draylon" target="_blank">Draylon</a>
 
-### `npm run build` fails to minify
+&#xa0;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<a href="#top">Back to top</a>

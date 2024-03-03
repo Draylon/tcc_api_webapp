@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, {useEffect, useState} from "react";
 // reactstrap components
 import {
   Button,
@@ -8,13 +9,13 @@ import {
   FormGroup,
   Form,
   Input,
-  InputGroupAddon,
   InputGroupText,
   InputGroup,
   Modal,
   Row,
   Col
 } from "reactstrap";
+import { LoginContext, LoginWrapper } from "../context/LoginContext";
 
 /* function RetrieveToken(){
     
@@ -39,17 +40,217 @@ import {
         </div>
     );
 } */
+import '../styles/userPage.css'
 
-class UserPages extends React.Component {
+const UserPanel = ({currentLoginInfo,revokeToken})=>{
+  console.log("?????")
+  const [panelState,setPanelState] = useState(false)
+  useEffect(()=>{
+      axios.get('http://192.168.43.35:8081/api/v1/protected',{
+      headers: {
+          Authorization: currentLoginInfo
+      }
+  }).then((resp1)=>{
+    console.log("resp1");
+    console.log(resp1);
+    
+  }).catch((e)=>{
+    console.log(e)
+    console.log("no longer valid, revoking");
+    revokeToken();
+  });
+  },[]);
+  
+  return (currentLoginInfo
+    ?<div>Already logged in</div>
+    :<div>Error opening user</div>);
+}
+
+const UserPages = ()=>{
+  
+  let [authMode,setAuthMode] = useState("signin")
+
+  const changeAuthMode = () => {
+    setAuthMode(authMode === "signin" ? "signup" : "signin")
+  }
+  
+  const [formData, setFormData] = useState({
+    un: '',
+    pw: '',
+    remember: false,
+    // Add more fields as needed
+  });
+
+  return (
+        <div className="userBody">
+          <LoginWrapper>
+              <LoginContext.Consumer>
+                {({currentLoginInfo,auth,signup,revokeToken})=>{
+
+                  console.log("defaulting to: ");
+                  console.log(currentLoginInfo);
+                  const handleInputChange = (event) => {
+                    const { name, value } = event.target;
+                    setFormData({
+                      ...formData,
+                      [name]: value,
+                    });
+                  };
+
+                  const handleAuthSubmit = (event) => {
+                    event.preventDefault();
+                    // Now you can access formData and pass it to your function
+                    auth(formData.un,formData.pw,formData.remember);
+                  };
+                  const handleSignupSubmit = (event) => {
+                    event.preventDefault();
+                    // Now you can access formData and pass it to your function
+                    signup(formData.un, formData.pw);
+                  };
+
+                  if(!currentLoginInfo || currentLoginInfo == null){
+                    if (authMode === "signin") return (
+                        <div className="Auth-form-container">
+                          <form className="Auth-form" onSubmit={handleAuthSubmit}>
+                            <div className="Auth-form-content">
+                              <h3 className="Auth-form-title">Sign In</h3>
+                              <div className="text-center">
+                                Not registered yet?{" "}
+                                <span className="link-primary" onClick={changeAuthMode}>
+                                  Sign Up
+                                </span>
+                              </div>
+                              <div className="form-group mt-3">
+                                <label>Username</label>
+                                <input
+                                  type="text"
+                                  name="un"
+                                  value={formData.un}
+                                  className="form-control mt-1"
+                                  placeholder="Enter username"
+                                  onChange={handleInputChange}
+                                />
+                              </div>
+                              <div className="form-group mt-3">
+                                <label>Password</label>
+                                <input
+                                  type="password"
+                                  name="pw"
+                                  value={formData.pw}
+                                  className="form-control mt-1"
+                                  placeholder="Enter password"
+                                  onChange={handleInputChange}
+                                />
+                              </div>
+                              <div className="form-group mt-1">
+                                <p style={{marginRight: "10px",display: "initial"}}>Remember me?</p>
+                                <input
+                                  value={formData.remember}
+                                  onChange={handleInputChange}
+                                  type="checkbox" name="remember"
+                                  checked={formData.remember}
+                                />
+                              </div>
+                              <div className="d-grid gap-2 mt-3">
+                                <button type="submit" className="btn btn-primary">
+                                  Submit
+                                </button>
+                              </div>
+                              <p className="text-center mt-2">
+                                Forgot <a href="#">password?</a>
+                              </p>
+                            </div>
+                          </form>
+                        </div>
+                      )
+                    return (
+                      <div className="Auth-form-container">
+                        <form className="Auth-form" onSubmit={handleSignupSubmit}>
+                          <div className="Auth-form-content">
+                            <h3 className="Auth-form-title">Sign Up</h3>
+                            <div className="text-center">
+                              Already registered?{" "}
+                              <span className="link-primary" onClick={changeAuthMode}>
+                                Sign In
+                              </span>
+                            </div>
+                            <div className="form-group mt-3">
+                              <label>Username</label>
+                              <input
+                                type="text"
+                                name="un"
+                                className="form-control mt-1"
+                                placeholder="My unique Username"
+                                value={formData.un}
+                                onChange={handleInputChange}
+                              />
+                            </div>
+                            <div className="form-group mt-3">
+                              <label>Password</label>
+                              <input
+                                type="password"
+                                name="pw"
+                                value={formData.pw}
+                                className="form-control mt-1"
+                                placeholder="Password"
+                                onChange={handleInputChange}
+                              />
+                            </div>
+                            <div className="d-grid gap-2 mt-3">
+                              <button type="submit" className="btn btn-primary">
+                                Submit
+                              </button>
+                            </div>
+                            <p className="text-center mt-2">
+                              Forgot <a href="#">password?</a>
+                            </p>
+                          </div>
+                        </form>
+                      </div>
+                    )
+                  }else{
+                    /* const loopback = async ()=>{
+                      return await axios.get('http://192.168.43.35:8081/api/v1/protected',{
+                        headers: {
+                            Authorization: currentLoginInfo
+                      }
+                      }).then((resp1)=>{
+                        console.log("resp1");
+                        console.log(resp1);
+                        return (<div>Already logged in</div>);
+                      }).catch((e)=>{
+                        console.log(e)
+                        return (<div>Error opening user</div>);
+                      });
+                    }
+                    loopback(); */
+                    return (<UserPanel currentLoginInfo={currentLoginInfo} revokeToken={revokeToken}/>);
+                  }
+                }}
+              </LoginContext.Consumer>
+          </LoginWrapper>
+      </div>
+  );
+  
+}
+
+export default UserPages;
+
+
+class UserPages2 extends React.Component {
   state = {
-    defaultModal: false
+    defaultModal: false,
+    loggedIn: false
   };
   toggleModal = state => {
     this.setState({
       [state]: !this.state[state]
     });
   };
+  
   render() {
+    localStorage.getItem("stonks")
+    sessionStorage.getItem("stonks")
     return (
       <>
         <Row>
@@ -199,7 +400,7 @@ class UserPages extends React.Component {
                         <span className="btn-inner--icon">
                           <img
                             alt="..."
-                            src={require("assets/img/icons/common/github.svg")}
+                            /* src={require("assets/img/icons/common/github.svg")} */
                           />
                         </span>
                         <span className="btn-inner--text">Github</span>
@@ -213,7 +414,7 @@ class UserPages extends React.Component {
                         <span className="btn-inner--icon">
                           <img
                             alt="..."
-                            src={require("assets/img/icons/common/google.svg")}
+                            /* src={require("assets/img/icons/common/google.svg")} */
                           />
                         </span>
                         <span className="btn-inner--text">Google</span>
@@ -227,21 +428,17 @@ class UserPages extends React.Component {
                     <Form role="form">
                       <FormGroup className="mb-3">
                         <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
                             <InputGroupText>
                               <i className="ni ni-email-83" />
                             </InputGroupText>
-                          </InputGroupAddon>
                           <Input placeholder="Email" type="email" />
                         </InputGroup>
                       </FormGroup>
                       <FormGroup>
                         <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
                             <InputGroupText>
                               <i className="ni ni-lock-circle-open" />
                             </InputGroupText>
-                          </InputGroupAddon>
                           <Input placeholder="Password" type="password" />
                         </InputGroup>
                       </FormGroup>
@@ -278,5 +475,3 @@ class UserPages extends React.Component {
     );
   }
 }
-
-export default UserPages;

@@ -2,8 +2,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import './appSearchBar.css';
+import './styles/App.css';
+import './styles/appSearchBar.css';
 import MainFooter from './pages/fragments/mainFooter';
 import MainHeader from './pages/fragments/mainHeader';
 import MainSection from './pages/fragments/mainSection';
@@ -12,8 +12,19 @@ import './util/WithScrollbar.css';
 import axios from 'axios';
 
 import {ContextContainer,initialAppState} from './util/staticVariables';
+import { LocationData } from './context/LocationDataContext';
+import { SensorData } from './context/SensorDataContext';
+import { SensorDevice} from './context/SensorDeviceContext';
 
-export default function App(){
+import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
+import MapPage from './pages/mapPage';
+import DataGather from './pages/dataGatherPage';
+import UserPages from './pages/userPage';
+import NotificationsPage from './pages/notificationsPage';
+import NavMenu from './pages/fragments/navMenu';
+
+
+function App2(){
   const [appState, updateAppState] = useState(initialAppState);
 
 
@@ -28,7 +39,7 @@ export default function App(){
             return null;
           })
           const loc_resp = ip_resp==null?null:
-          await axios.get("http://192.168.0.4:8081/api/v1/util/geocoding/"+ip_resp.ip).then(locationDataResponse => {
+          await axios.get("http://192.168.43.35:8081/api/v1/util/geocoding/"+ip_resp.ip).then(locationDataResponse => {
             return locationDataResponse.data;
           }).catch(e=>{
             console.error(e);
@@ -51,15 +62,90 @@ export default function App(){
 
 
   return(
-    <div className='wrapper'>
-      <ContextContainer.Provider value={{ appState, updateAppState }}>
-        <MainHeader/>
-        <MainSection/>
-        <MainFooter/>
-      </ContextContainer.Provider>
-    </div>
+      /* <ContextContainer.Provider value={{ appState, updateAppState }}> */
+      <Router>
+            <Routes>
+                <Route path='/' exact element={<div className='wrapper'>
+                  <MainHeader/>
+                  <MainSection/>
+                  <MainFooter/>
+                </div>} />
+                <Route path='/map' element={
+                  <div className='wrapper'>
+                    <NavMenu/>
+                    <MapPage/>
+                    <MainFooter/>
+                  </div>} />
+                <Route path='/custom_data' element={
+                  <div className='wrapper'>
+                    <NavMenu/>
+                    <DataGather/>
+                    <MainFooter/>
+                  </div>} />
+                <Route path='/user' element={
+                  <div className='wrapper'>
+                    <NavMenu/>
+                    <UserPages/>
+                    <MainFooter/>
+                  </div>} />
+                <Route path='/notification_center' element={
+                <div className='wrapper'>
+                  <NavMenu/>
+                  <NotificationsPage/>
+                  <MainFooter/>
+                </div>} />
+            </Routes>
+        </Router>
+      /* </ContextContainer.Provider> */
   )
 };
+
+export default function App(){
+  if(Notification.permission != "denied"){
+    if(Notification.permission!="granted"){
+        Notification.requestPermission();
+    }
+  }
+  return(
+    /* <ContextContainer.Provider value={{ appState, updateAppState }}> */
+      <LocationData>
+      <Router>
+          <Routes>
+              <Route path='/' exact element={<div className='wrapper'>
+                <MainHeader/>
+                <MainSection/>
+                <MainFooter/>
+              </div>} />
+              <Route path='/map' element={
+                <div className='wrapper'>
+                  <NavMenu/>
+                  <MapPage/>
+                  <MainFooter/>
+                </div>} />
+              <Route path='/custom_data' element={
+                <div className='wrapper'>
+                  <NavMenu/>
+                  <DataGather/>
+                  <MainFooter/>
+                </div>} />
+              <Route path='/user' element={
+                <div className='wrapper'>
+                  <NavMenu/>
+                  <UserPages/>
+                  <MainFooter/>
+                </div>} />
+              <Route path='/notification_center' element={
+              <div className='wrapper'>
+                <NavMenu/>
+                <NotificationsPage/>
+                <MainFooter/>
+              </div>} />
+          </Routes>
+      </Router>
+      </LocationData>
+    /* </ContextContainer.Provider> */
+);
+}
 
 
 /* class App123 extends Component {

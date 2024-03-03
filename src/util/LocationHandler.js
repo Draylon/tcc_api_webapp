@@ -7,7 +7,7 @@ let fetchLocationData = () => {
     if (cityName==null) {
         console.log("querying cityName");
         cityName = fetchUserip().then(response =>{
-            return axios.get("http://192.168.0.4:8081/api/v1/util/geocoding/"+response.data.ip);
+            return axios.get("http://192.168.43.35:8081/api/v1/util/geocoding/"+response.data.ip);
         }).catch(e=>{
             cityName=null
         });

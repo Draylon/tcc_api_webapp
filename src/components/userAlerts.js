@@ -24,7 +24,6 @@ class UserAlerts extends Component {
         return(
             <div className='alerts_comp navmenu_icon_iv'
             onClick={()=>{
-                alert("dropdown notifications")
             }}
             >
                 <BellIcon/>

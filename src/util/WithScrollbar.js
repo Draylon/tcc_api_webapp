@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
 //import "./WithScrollbar.css";
+import {NavLink} from 'react-router-dom';
 
 import { Card, CardImg, CardBody, Placeholder, PlaceholderButton, CardText, ButtonToggle, Row, Col, CardColumns, CardTitle } from "reactstrap";
 
@@ -32,9 +33,11 @@ function BuildCard(props){
             <CardBody>
                 <Row>
                     <CardTitle style={{}}>{props.item.name}</CardTitle>
-                    <ButtonToggle>
-                        Info
-                    </ButtonToggle>
+                    <NavLink to="/data" activeStyle>
+                        <ButtonToggle>
+                            Info
+                        </ButtonToggle>
+                    </NavLink>
                 </Row>
             </CardBody>
         </Card>

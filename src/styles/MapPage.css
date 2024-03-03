@@ -1,0 +1,54 @@
+.map_wrapper{
+    position: relative;
+    padding: 0;
+    margin: 0;
+    flex: auto;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.leaflet_floatingActionButton{
+    position: absolute;
+    bottom: 2.2vh;
+    z-index: 12;
+    right: 0.6vw;
+}
+
+.leaflet_floatingActionButton p{
+    margin-bottom: 0;
+}
+.leaflet_floatingActionButton button{
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    margin: 0vh 5vh 5vh 5vh;
+}
+
+.msec_leftmost .leaflet-container{
+    z-index: 0;
+}
+
+.msec_leftmost{
+    flex: auto;
+    position: relative;
+    z-index: 1;
+    padding: 1.2vw;
+    display: flex;
+    padding-right: 0.6vw;
+    flex-direction: column;
+    
+}
+
+
+
+.msec_leftmost .leaflet-container {
+    position: relative;
+    flex: auto;
+}
+
+.msec_rightmost{
+    width: 35vw;
+    background: rgb(226, 226, 235);
+    margin: 1.2vw;
+    margin-left: 0.6vw;
+}
