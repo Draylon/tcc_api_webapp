@@ -6,7 +6,7 @@
   <!-- <a href="https://api.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">TCC - API</h1>
+<h1 align="center">TCC - WebApp</h1>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/draylon/tcc_api_webapp?color=56BEB8">
@@ -33,7 +33,7 @@
 <hr> -->
 
 <p align="center">
-  <a href="https://github.com/Draylon/tcc_impl">Voltar</a> &#xa0; | &#xa0; 
+  <a href="https://github.com/Draylon/tcc_impl/?tab=readme-ov-file#trabalho-de-conclus%C3%A3o-de-curso">Voltar</a> &#xa0; | &#xa0; 
   <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
