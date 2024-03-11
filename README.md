@@ -74,6 +74,11 @@ $ npm start
 ```
 Após executar, o WEBAPP é inicializado na porta 8080, visto em [app.js](app.js)
 
+É necessário definir variáveis de ambiente, utilizando [dotenv](https://npmjs.com/package/dotenv), criando um arquivo .env na raíz do projeto, e definindo as variáveis:
+- NODE_ENV
+  - development
+  - production
+
 ## :memo: License ##
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
